@@ -1,10 +1,12 @@
 import {
   isRouteErrorResponse,
   Links,
+  Link,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLocation,
 } from "react-router";
 
 import type { Route } from "./+types/root";
@@ -42,5 +44,34 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  const location = useLocation();
+  const currentPath = location.pathname;
+
+  const isActive: (path: string) => boolean = (path: string) => {
+    if (path === "/") {
+      return currentPath === "/";
+    }
+    return currentPath.startsWith(path);
+  };
+
+  return (
+    <>
+      <nav className="bg-white shadow-md sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between h-16">
+            <div className="flex items-center gap-6">
+              <a>
+                Home
+              </a>
+              {/* Nên dùng thẻ link thay cho thẻ a  */}
+              <Link>
+                🌤️ Weather
+              </Link>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <Outlet />
+    </>
+  );
 }
