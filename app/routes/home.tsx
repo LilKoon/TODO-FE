@@ -79,7 +79,7 @@ export default function Home() {
             className="flex justify-start items-center pl-10 border-b-1 border-gray-300">
             <p>Filter by:</p>
             <div className="dropdown relative inline-block text-left m-4">
-              <button onclick="toggleDropdown()" id="filter-btn"
+              <button onClick="toggleDropdown()" id="filter-btn"
                 className="dropbtn text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center cursor-pointer">
                 <span>Tất cả</span>
                 <svg className="fill-current h-4 w-4 ml-2"
@@ -90,19 +90,19 @@ export default function Home() {
               <div id="myDropdown"
                 className="dropdown-content hidden absolute left-0 mt-2 w-40 bg-white border border-gray-200 rounded-md shadow-lg z-10">
                 <div className="py-1">
-                  <a href="#" onclick="thayDoiBoLoc('all')"
+                  <a href="#" onClick="thayDoiBoLoc('all')"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Tất
                     cả</a>
-                  <a href="#" onclick="thayDoiBoLoc('active')"
+                  <a href="#" onClick="thayDoiBoLoc('active')"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Đang
                     thực hiện</a>
-                  <a href="#" onclick="thayDoiBoLoc('completed')"
+                  <a href="#" onClick="thayDoiBoLoc('completed')"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Đã
                     hoàn thành</a>
-                  <a href="#" onclick="thayDoiBoLoc('notlate')"
+                  <a href="#" onClick="thayDoiBoLoc('notlate')"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Chưa
                     tới hạn</a>
-                  <a href="#" onclick="thayDoiBoLoc('late')"
+                  <a href="#" onClick="thayDoiBoLoc('late')"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Quá
                     hạn</a>
                 </div>
