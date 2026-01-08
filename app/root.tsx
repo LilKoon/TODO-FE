@@ -47,24 +47,30 @@ export default function App() {
   const location = useLocation();
   const currentPath = location.pathname;
 
-  const isActive: (path: string) => boolean = (path: string) => {
+  const isActive = (path: string) => {
     if (path === "/") {
       return currentPath === "/";
     }
     return currentPath.startsWith(path);
   };
 
+  const linkClass = (path: string) =>
+    `px-3 py-2 rounded-md text-sm font-medium transition-colors ${isActive(path)
+      ? "bg-gray-900 text-white"
+      : "text-gray-700 hover:bg-gray-200 hover:text-gray-900"
+    }`;
+
   return (
     <>
       <nav className="bg-white shadow-md sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
-            <div className="flex items-center gap-6">
-              <a>
+            <div className="flex items-center gap-4">
+              <Link to="/" className={linkClass("/")}>
                 Home
-              </a>
-              {/* Nên dùng thẻ link thay cho thẻ a  */}
-              <Link>
+              </Link>
+
+              <Link to="/weather" className={linkClass("/weather")}>
                 🌤️ Weather
               </Link>
             </div>
