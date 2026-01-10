@@ -1,16 +1,18 @@
+import { Breadcrumb, Layout as AntLayout, Menu } from "antd";
 import {
-  isRouteErrorResponse,
-  Links,
   Link,
+  Links,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
   useLocation,
 } from "react-router";
-
 import type { Route } from "./+types/root";
 import "./app.css";
+import { HomeIcon, Sun } from "lucide-react";
+
+const { Header, Content, Footer } = AntLayout;
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -55,29 +57,105 @@ export default function App() {
   };
 
   const linkClass = (path: string) =>
-    `px-3 py-2 rounded-md text-sm font-medium transition-colors ${isActive(path)
-      ? "bg-gray-900 text-white"
-      : "text-gray-700 hover:bg-gray-200 hover:text-gray-900"
+    `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+      isActive(path)
+        ? "bg-gray-900 text-white"
+        : "text-gray-700 hover:bg-gray-200 hover:text-gray-900"
     }`;
 
   return (
     <>
-      <nav className="bg-white shadow-md sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
-            <div className="flex items-center gap-4">
-              <Link to="/" className={linkClass("/")}>
-                Home
-              </Link>
-
-              <Link to="/weather" className={linkClass("/weather")}>
-                🌤️ Weather
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
-      <Outlet />
-    </>
+    <AntLayout>
+      <Header
+        style={{
+          position: "sticky",
+          top: 0,
+          zIndex: 1,
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        <div className="demo-logo" />
+        <Menu
+          theme="dark"
+          mode="horizontal"
+          defaultSelectedKeys={["2"]}
+          items={[
+            {
+              label: <Link to="/">Home</Link>,
+              key: "home",
+              icon: <HomeIcon />,
+            },
+            {
+              label: <Link to="/weather">Weather</Link>,
+              key: "Weather",
+              icon: <Sun />,
+            },
+          ]}
+          style={{ flex: 1, minWidth: 0 }}
+        />
+      </Header>
+      <Content style={{ padding: "0 48px" }}>
+        <Breadcrumb
+          style={{ margin: "16px 0" }}
+          items={[{ title: "Home" }, { title: "List" }, { title: "App" }]}
+        />
+        <Outlet />
+      </Content>
+      <Footer style={{ textAlign: "center" }}>
+        Ant Design ©{new Date().getFullYear()} Created by Ant UED
+      </Footer>
+    </AntLayout>
+  </>
   );
 }
+
+/*
+return (
+  <>
+    <AntLayout>
+      <Header
+        style={{
+          position: "sticky",
+          top: 0,
+          zIndex: 1,
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        <div className="demo-logo" />
+        <Menu
+          theme="dark"
+          mode="horizontal"
+          defaultSelectedKeys={["2"]}
+          items={[
+            {
+              label: "Home",
+              key: "home",
+              icon: <HomeIcon />,
+            },
+            {
+              label: "Weather",
+              key: "Weather",
+              icon: <Sun />,
+            },
+          ]}
+          style={{ flex: 1, minWidth: 0 }}
+        />
+      </Header>
+      <Content style={{ padding: "0 48px" }}>
+        <Breadcrumb
+          style={{ margin: "16px 0" }}
+          items={[{ title: "Home" }, { title: "List" }, { title: "App" }]}
+        />
+        <Outlet />
+      </Content>
+      <Footer style={{ textAlign: "center" }}>
+        Ant Design ©{new Date().getFullYear()} Created by Ant UED
+      </Footer>
+    </AntLayout>
+  </>
+);
+*/
