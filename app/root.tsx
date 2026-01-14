@@ -57,57 +57,56 @@ export default function App() {
   };
 
   const linkClass = (path: string) =>
-    `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-      isActive(path)
-        ? "bg-gray-900 text-white"
-        : "text-gray-700 hover:bg-gray-200 hover:text-gray-900"
+    `px-3 py-2 rounded-md text-sm font-medium transition-colors ${isActive(path)
+      ? "bg-gray-900 text-white"
+      : "text-gray-700 hover:bg-gray-200 hover:text-gray-900"
     }`;
 
   return (
     <>
-    <AntLayout>
-      <Header
-        style={{
-          position: "sticky",
-          top: 0,
-          zIndex: 1,
-          width: "100%",
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
-        <div className="demo-logo" />
-        <Menu
-          theme="dark"
-          mode="horizontal"
-          defaultSelectedKeys={["2"]}
-          items={[
-            {
-              label: <Link to="/">Home</Link>,
-              key: "home",
-              icon: <HomeIcon />,
-            },
-            {
-              label: <Link to="/weather">Weather</Link>,
-              key: "Weather",
-              icon: <Sun />,
-            },
-          ]}
-          style={{ flex: 1, minWidth: 0 }}
-        />
-      </Header>
-      <Content style={{ padding: "0 48px" }}>
-        <Breadcrumb
-          style={{ margin: "16px 0" }}
-          items={[{ title: "Home" }, { title: "List" }, { title: "App" }]}
-        />
-        <Outlet />
-      </Content>
-      <Footer style={{ textAlign: "center" }}>
-        Ant Design ©{new Date().getFullYear()} Created by Ant UED
-      </Footer>
-    </AntLayout>
-  </>
+      <AntLayout>
+        <Header
+          style={{
+            position: "sticky",
+            top: 0,
+            zIndex: 1,
+            width: "100%",
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <div className="demo-logo" />
+          <Menu
+            theme="dark"
+            mode="horizontal"
+            defaultSelectedKeys={["2"]}
+            items={[
+              {
+                label: <Link to="/">Home</Link>,
+                key: "home",
+                icon: <HomeIcon />,
+              },
+              {
+                label: <Link to="/weather">Weather</Link>,
+                key: "Weather",
+                icon: <Sun />,
+              },
+            ]}
+            style={{ flex: 1, minWidth: 0 }}
+          />
+        </Header>
+        <Content style={{ padding: "0 48px" }}>
+          <Breadcrumb
+            style={{ margin: "16px 0" }}
+            items={[{ title: "Home" }, { title: "List" }, { title: "App" }]}
+          />
+          <Outlet />
+        </Content>
+        <Footer style={{ textAlign: "center" }}>
+          Duck Manh Design ©{new Date().getFullYear()} Created by Lil Koon Ngo
+        </Footer>
+      </AntLayout>
+    </>
   );
 }
 
